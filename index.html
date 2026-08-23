@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The White Rose Eventz | Premium Event Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-label" id="cursorLabel"></div>
+
+    <!-- Gold Dust Canvas -->
+    <canvas class="gold-canvas" id="goldCanvas"></canvas>
+
+    <!-- Section Transition Overlay -->
+    <div class="section-transition" id="sectionTransition" aria-hidden="true">
+        <div class="transition-dark"></div>
+        <div class="transition-line"></div>
+        <svg class="transition-petal" viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20,60 C20,60 5,40 5,25 C5,10 12,0 20,0 C28,0 35,10 35,25 C35,40 20,60 20,60Z"
+                  fill="#C9A84C" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-spa"></i> The White Rose Eventz
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#custom">Custom Themes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home" role="banner" aria-label="The White Rose Eventz - Premium Event Management">
+        <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+
+        <!-- Cinematic Curtain Lines -->
+        <div class="curtain-line curtain-top" id="curtainTop" aria-hidden="true"></div>
+        <div class="curtain-line curtain-bottom" id="curtainBottom" aria-hidden="true"></div>
+
+
+
+        <div class="sr-only">
+            <h1>The White Rose Eventz</h1>
+            <p>Premium Event Management. We don't just plan events, we craft emotions that stay forever.</p>
+            <p>Services: Birthday decorations, wedding setups, custom themed events, anniversary celebrations, and premium event styling.</p>
+            <nav aria-label="Hero navigation">
+                <a href="#packages">View Packages</a>
+                <a href="#contact">Get in Touch</a>
+            </nav>
+        </div>
+
+        <div class="hero-cta-overlay" id="heroCta">
+            <a href="#packages" class="btn btn-primary hero-btn" data-cursor="expand">
+                <span class="btn-text">View Packages</span>
+                <span class="btn-arrow"><i class="fas fa-arrow-right"></i></span>
+                <span class="btn-shine"></span>
+            </a>
+            <a href="#contact" class="btn btn-secondary hero-btn" data-cursor="expand">
+                <span class="btn-text">Get in Touch</span>
+                <span class="btn-glow"></span>
+            </a>
+        </div>
+
+        <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Moment Statement -->
+    <section class="moment-statement" id="momentStatement">
+        <div class="container">
+            <p class="moment-text" id="momentText">
+                <span class="moment-word">YOUR</span>
+                <span class="moment-word">MOMENT</span>
+                <span class="moment-word">DESERVES</span>
+                <span class="moment-word">A</span>
+                <span class="moment-word">STORY</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="section-tag reveal-text">Who We Are</p>
+                    <h2 class="section-title reveal-text">Crafting Beautiful Celebrations</h2>
+                    <p class="reveal-text">At <strong>The White Rose Eventz</strong>, we believe every celebration deserves a personal touch. From intimate birthday gatherings to grand celebrations, we transform your vision into reality with meticulous attention to detail and creative excellence.</p>
+                    <p class="reveal-text">Our team of passionate event designers and coordinators work closely with you to create bespoke experiences that reflect your style and personality.</p>
+                    <div class="about-stats">
+                        <div class="stat reveal-text">
+                            <span class="stat-number">51+</span>
+                            <span class="stat-label">Events Managed</span>
+                        </div>
+                        <div class="stat reveal-text">
+                            <span class="stat-number">96%</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat reveal-text">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Themes Available</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <div class="about-showcase" id="aboutShowcase">
+                        <div class="showcase-frame">
+                            <img src="images/image5.jpeg" alt="Event decoration" class="showcase-img">
+                            <img src="images/image7.jpeg" alt="Themed event setup" class="showcase-img">
+                            <img src="images/image9.jpg" alt="Birthday celebration" class="showcase-img">
+                            <img src="images/image1.jpeg" alt="Elegant decor detail" class="showcase-img active">
+                        </div>
+                        <div class="showcase-dots" id="showcaseDots"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <p class="section-tag text-center reveal-text">Birthday Collections</p>
+            <h2 class="section-title text-center reveal-text">Our Celebration Packages</h2>
+            <p class="section-desc text-center reveal-text">Choose the perfect package for your special day</p>
+
+            <div class="packages-grid">
+                <div class="package-card" data-tilt>
+                    <div class="package-header basic">
+                        <span class="package-badge">Classic</span>
+                        <h3>Basic Package</h3>
+                        <div class="price">
+                            <span class="old-price">&#8377;8,999</span>
+                            <span class="new-price">&#8377;6,888</span>
+                        </div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 250 Balloons (Organic Arch + Ring Decor)</li>
+                            <li><i class="fas fa-check"></i> Backdrop + White Sparkling Curtain</li>
+                            <li><i class="fas fa-check"></i> 4 Theme Cutouts</li>
+                            <li><i class="fas fa-check"></i> Fresh Flowers</li>
+                            <li><i class="fas fa-check"></i> 2 Fence</li>
+                            <li><i class="fas fa-check"></i> Ring Decor</li>
+                            <li><i class="fas fa-check"></i> Happy Birthday Light</li>
+                            <li><i class="fas fa-check"></i> Name Light</li>
+                            <li><i class="fas fa-check"></i> 2 LED Warm Lights</li>
+                            <li><i class="fas fa-check"></i> Cake Table with Cover</li>
+                            <li><i class="fas fa-check"></i> 2 Balloon Standees</li>
+                            <li><i class="fas fa-check"></i> 2 Eagle Stands</li>
+                            <li><i class="fas fa-check"></i> Sound System</li>
+                            <li><i class="fas fa-check"></i> Instagram Reel (15-30 sec)</li>
+                            <li><i class="fas fa-check"></i> Thank You Card + QR</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-package" data-cursor="discover">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card featured" data-tilt>
+                    <div class="package-header premium">
+                        <span class="package-badge">Most Popular</span>
+                        <h3>Premium Package</h3>
+                        <div class="price">
+                            <span class="old-price">&#8377;15,000</span>
+                            <span class="new-price">&#8377;12,222</span>
+                        </div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 300 Balloons (Organic Arch + Ring Decor)</li>
+                            <li><i class="fas fa-check"></i> 25 Floating Balloons</li>
+                            <li><i class="fas fa-check"></i> Theme Variation / Character Cutouts</li>
+                            <li><i class="fas fa-check"></i> Backdrop + White Sparkling Curtain</li>
+                            <li><i class="fas fa-check"></i> 2 Italian Arch with Matching Theme</li>
+                            <li><i class="fas fa-check"></i> 2 Fence</li>
+                            <li><i class="fas fa-check"></i> Fresh Flowers</li>
+                            <li><i class="fas fa-check"></i> Happy Birthday Light</li>
+                            <li><i class="fas fa-check"></i> Name Light + Number Light</li>
+                            <li><i class="fas fa-check"></i> 4 LED Warm Lights</li>
+                            <li><i class="fas fa-check"></i> Cake Table with Vinyl/Cover</li>
+                            <li><i class="fas fa-check"></i> 4 Balloon Standees</li>
+                            <li><i class="fas fa-check"></i> 2 Eagle Stands</li>
+                            <li><i class="fas fa-check"></i> Sound System with Mic</li>
+                            <li><i class="fas fa-check"></i> Photo/Video - 5-10 Edited Photos or 30-sec Reel</li>
+                            <li><i class="fas fa-check"></i> Thank You Card + QR</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-package" data-cursor="discover">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="package-card" data-tilt>
+                    <div class="package-header elite">
+                        <span class="package-badge">Luxury</span>
+                        <h3>Elite Package</h3>
+                        <div class="price">
+                            <span class="old-price">&#8377;40,000</span>
+                            <span class="new-price">&#8377;33,333</span>
+                        </div>
+                    </div>
+                    <div class="package-body">
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 500 Balloons (Organic Arch + Ring Decor)</li>
+                            <li><i class="fas fa-check"></i> 50 Floating Balloons</li>
+                            <li><i class="fas fa-check"></i> Backdrop + Curtain</li>
+                            <li><i class="fas fa-check"></i> Full Theme Decor Setup</li>
+                            <li><i class="fas fa-check"></i> Entry Arch</li>
+                            <li><i class="fas fa-check"></i> Cake Table with Vinyl/Cover</li>
+                            <li><i class="fas fa-check"></i> Smoke Entry</li>
+                            <li><i class="fas fa-check"></i> Cold Pyro with Cake Cutting</li>
+                            <li><i class="fas fa-check"></i> Italian Arch + Fence</li>
+                            <li><i class="fas fa-check"></i> All Lights (Birthday, Name, Number)</li>
+                            <li><i class="fas fa-check"></i> Buggy/Bike/Formula 1 (Based on availability)</li>
+                            <li><i class="fas fa-check"></i> Stage Carpet</li>
+                            <li><i class="fas fa-check"></i> Baby LED Name</li>
+                            <li><i class="fas fa-check"></i> Balloon Pillars / Standees</li>
+                            <li><i class="fas fa-check"></i> 4 Eagle Stands</li>
+                            <li><i class="fas fa-check"></i> Sound System + Mic</li>
+                            <li><i class="fas fa-check"></i> Short Video Coverage</li>
+                            <li><i class="fas fa-check"></i> Thank You Card</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-package" data-cursor="discover">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Themes Section -->
+    <section class="custom" id="custom">
+        <div class="container">
+            <div class="custom-content">
+                <p class="section-tag reveal-text">Your Vision, Our Craft</p>
+                <h2 class="section-title reveal-text">Tailor-Made Decorations for Every Theme</h2>
+                <p class="reveal-text">Don't see exactly what you're looking for? We specialize in creating <strong>custom event designs</strong> tailored to your unique vision. Whether it's a fairy tale princess party, a superhero adventure, an elegant floral affair, or something entirely original &mdash; our creative team will bring your dream to life.</p>
+                <div class="theme-tags reveal-text">
+                    <span class="theme-tag"><i class="fas fa-crown"></i> Royal Theme</span>
+                    <span class="theme-tag"><i class="fas fa-star"></i> Hollywood Theme</span>
+                    <span class="theme-tag"><i class="fas fa-palette"></i> Pastel Dreams</span>
+                    <span class="theme-tag"><i class="fas fa-mountain"></i> Safari Adventure</span>
+                    <span class="theme-tag"><i class="fas fa-fish"></i> Under the Sea</span>
+                    <span class="theme-tag"><i class="fas fa-hat-wizard"></i> Magical Unicorn</span>
+                    <span class="theme-tag"><i class="fas fa-rocket"></i> Space Explorer</span>
+                    <span class="theme-tag"><i class="fas fa-heart"></i> Floral Elegance</span>
+                </div>
+                <a href="#contact" class="btn btn-primary reveal-text">Discuss Your Theme</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <p class="section-tag text-center reveal-text">What Clients Say</p>
+            <h2 class="section-title text-center reveal-text">Words of Love</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card love-letter reveal-text" data-handwrite>
+                    <div class="letter-seal"><i class="fas fa-heart"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="letter-text">"Their team finished the setup while we were busy receiving guests — I walked in and the hall looked straight out of a movie. When my daughter saw her name in lights, her face... that alone was worth every rupee."</p>
+                    <div class="letter-signature">
+                        <span class="signature-line"></span>
+                        <span class="client-name">— Priya Deshmukh, Kothrud</span>
+                    </div>
+                </div>
+                <div class="testimonial-card love-letter reveal-text" data-handwrite>
+                    <div class="letter-seal"><i class="fas fa-heart"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="letter-text">"Booked them for my son's first birthday. The cold pyro during cake cutting — everyone pulled their phones out at the same moment. They were done a full hour before guests arrived. Zero stress for us, and we actually enjoyed our own party."</p>
+                    <div class="letter-signature">
+                        <span class="signature-line"></span>
+                        <span class="client-name">— Amit &amp; Sneha Joshi, Baner</span>
+                    </div>
+                </div>
+                <div class="testimonial-card love-letter reveal-text" data-handwrite>
+                    <div class="letter-seal"><i class="fas fa-heart"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="letter-text">"I sent them a messy folder of Pinterest saves and said 'make it feel like this.' The unicorn theme they built for my daughter honestly made me emotional. Guests kept asking who did the decor — I didn't want to tell them!"</p>
+                    <div class="letter-signature">
+                        <span class="signature-line"></span>
+                        <span class="client-name">— Neha Patil, Wakad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="section-tag reveal-text">Get in Touch</p>
+                    <h2 class="section-title reveal-text">Let's Plan Your Event</h2>
+                    <p class="reveal-text">Ready to make your celebration unforgettable? Reach out to us and let's start planning your perfect event!</p>
+                    <div class="contact-details">
+                        <div class="contact-item reveal-text">
+                            <div class="contact-icons">
+                                <a href="tel:+917770025067" aria-label="Call Shubham Ambep"><i class="fas fa-phone-alt"></i></a>
+                                <a href="https://wa.me/917770025067" target="_blank" rel="noopener" class="whatsapp" aria-label="WhatsApp Shubham Ambep"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                            <div>
+                                <span>Shubham Ambep</span>
+                                <p>+91 77700 25067 &mdash; Call / WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="contact-item reveal-text">
+                            <div class="contact-icons">
+                                <a href="tel:+917410549428" aria-label="Call Sagar Tatke"><i class="fas fa-phone-alt"></i></a>
+                                <a href="https://wa.me/917410549428" target="_blank" rel="noopener" class="whatsapp" aria-label="WhatsApp Sagar Tatke"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                            <div>
+                                <span>Sagar Tatke</span>
+                                <p>+91 74105 49428 &mdash; Call / WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="contact-item reveal-text">
+                            <div class="contact-icons">
+                                <a href="mailto:thewhiteroseeventz@gmail.com" aria-label="Email The White Rose Eventz"><i class="fas fa-envelope"></i></a>
+                            </div>
+                            <div>
+                                <span>Email Us</span>
+                                <p><a href="mailto:thewhiteroseeventz@gmail.com">thewhiteroseeventz@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item reveal-text">
+                            <div class="contact-icons">
+                                <a href="https://www.instagram.com/thewhiteroseeventz" target="_blank" rel="noopener" class="instagram" aria-label="Instagram - The White Rose Eventz"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div>
+                                <span>Follow Us</span>
+                                <p>@thewhiteroseeventz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal-text">
+                    <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-label="Open the enquiry envelope" data-cursor="open">
+                        <div class="envelope-back"></div>
+                        <div class="envelope-letter">
+                            <form class="contact-form" id="contactForm" action="https://formsubmit.co/thewhiteroseeventz@gmail.com" method="POST">
+                                <input type="hidden" name="_subject" value="New Event Enquiry — The White Rose Eventz">
+                                <input type="hidden" name="_template" value="table">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <select name="package" required>
+                                        <option value="" disabled selected>Select Package</option>
+                                        <option>Basic Package - &#8377;6,888</option>
+                                        <option>Premium Package - &#8377;12,222</option>
+                                        <option>Elite Package - &#8377;33,333</option>
+                                        <option>Custom Theme</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="date" name="event_date" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <textarea name="message" placeholder="Tell us about your event..." rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">Send Enquiry</button>
+                            </form>
+                            <div class="form-success" id="formSuccess" hidden aria-live="polite">
+                                <div class="success-seal"><i class="fas fa-check"></i></div>
+                                <h3>Form Submitted!</h3>
+                                <p>Your enquiry is on its way to us. We'll get back to you shortly to plan your celebration.</p>
+                                <button type="button" class="btn btn-secondary" id="resetFormBtn">Fill Another Form</button>
+                            </div>
+                        </div>
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-seal"><i class="fas fa-heart"></i></div>
+                        <div class="envelope-note" id="envelopeNote" hidden aria-live="polite">
+                            <p><i class="fas fa-check-circle"></i> Sealed &amp; Sent!</p>
+                            <button type="button" class="btn btn-secondary btn-small" id="reopenBtn">Fill New Form</button>
+                        </div>
+                    </div>
+                    <p class="envelope-hint" id="envelopeHint"><i class="fas fa-hand-pointer"></i> Click the seal to open</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-spa"></i> The White Rose Eventz</h3>
+                    <p>Making every celebration a beautiful memory. Premium event management with a personal touch.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-tagline">
+                <div class="tagline-divider">
+                    <span></span>
+                    <i class="fas fa-heart"></i>
+                    <span></span>
+                </div>
+                <p class="tagline-script">A Company Made With Love, Honesty &amp; Passion</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The White Rose Eventz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

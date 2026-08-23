@@ -1,0 +1,22 @@
+# OS / system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & temp
+*.log
+tmp/
+
+# Dependencies (not used yet, future-proof)
+node_modules/
+
+# Local working files (not part of the site)
+BACKUP_CODE.pdf
+bg image.png
+bg img.jpg
