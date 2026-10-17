@@ -979,14 +979,7 @@ h1, h2, h3, h4 {
 }
 
 .package-header {
-    padding: 30px 25px;
-    text-align: center;
-    color: var(--white);
-    position: relative;
-}
-
-.package-header {
-    padding: 34px 25px;
+    padding: 30px 25px 34px;
     text-align: center;
     color: var(--white);
     position: relative;
@@ -1048,17 +1041,21 @@ h1, h2, h3, h4 {
 }
 
 .package-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+    /* In normal flow above the title rather than floating over it, so the
+       badge can never collide with the package name at any card width. */
+    position: static;
+    display: flex;
+    width: fit-content;
+    margin: 0 0 14px;
     background: rgba(255,255,255,0.16);
     border: 1px solid rgba(232, 213, 168, 0.45);
     backdrop-filter: blur(4px);
-    padding: 4px 12px;
+    padding: 5px 14px;
     border-radius: 20px;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    line-height: 1.6;
     font-family: 'Poppins', sans-serif;
 }
 
