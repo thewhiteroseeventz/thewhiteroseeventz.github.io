@@ -355,10 +355,19 @@
             e.preventDefault();
             if (submitBtn.disabled) return;
 
+            // Point the plain-POST fallback at this page's own address so the
+            // visitor is returned to the enquiry form on whatever host we are on.
+            const nextField = contactForm.querySelector('[name="_next"]');
+            if (nextField) nextField.value = location.origin + location.pathname + '#contact';
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
 
-            try {
+            // Sending an Accept header forces a CORS preflight. Mobile data
+            // networks and captive portals break that handshake often enough
+            // that a plain POST is kept as a hard delivery guarantee instead of
+            // letting an enquiry quietly vanish.
+            const send = async () => {
                 const response = await fetch(ajaxEndpoint, {
                     method: 'POST',
                     body: new FormData(contactForm),
@@ -367,14 +376,15 @@
                 const result = await response.json().catch(() => null);
                 // Formspree: HTTP 200 + { ok: true } when accepted,
                 // HTTP 4xx + { ok: false, errors: [...] } when rejected.
-                const ok = Boolean(response.ok && result && result.ok === true);
-                if (!ok) {
+                if (!(response.ok && result && result.ok === true)) {
                     const first = result && Array.isArray(result.errors) && result.errors.length
                         ? (result.errors[0].message || result.errors[0])
                         : null;
-                    throw new Error(first || (result && result.message) || 'Submission failed');
+                    throw new Error(first || (result && result.message) || ('HTTP ' + response.status));
                 }
+            };
 
+            const showSuccess = () => {
                 contactForm.hidden = true;
                 formSuccess.hidden = false;
                 requestAnimationFrame(() => {
@@ -384,8 +394,23 @@
                 setTimeout(() => {
                     if (envelopeFlow.reseal) envelopeFlow.reseal();
                 }, 2800);
+            };
+
+            try {
+                try {
+                    await send();
+                } catch (firstErr) {
+                    console.warn('[enquiry] first attempt failed, retrying:', firstErr);
+                    await new Promise(r => setTimeout(r, 1200));
+                    await send();
+                }
+                showSuccess();
             } catch (err) {
-                alert('Something went wrong while sending your enquiry. Please call or WhatsApp us instead.');
+                // Real cause is kept in the console rather than discarded.
+                console.error('[enquiry] AJAX unusable, falling back to native POST:', err);
+                // .submit() bypasses this listener, so it cannot recurse.
+                contactForm.submit();
+                return;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
