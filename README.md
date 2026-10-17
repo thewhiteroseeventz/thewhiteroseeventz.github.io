@@ -12,19 +12,21 @@ Official website of **The White Rose Eventz** — birthday decorations, custom t
 - Custom cursor & scroll-driven section transitions
 - Interactive birthday packages (Basic / Premium / Elite)
 - Envelope-style contact form with open/seal animations
-- Working enquiry form delivered straight to email (FormSubmit)
+- Working enquiry form delivered straight to email (Formspree)
 - Fully responsive — mobile hamburger navigation
 
 ## Tech
 
 - HTML5, CSS3, Vanilla JavaScript
 - Font Awesome, Google Fonts
-- FormSubmit for email delivery
+- Formspree for email delivery (endpoint in `index.html`, form `mwlvyjnb`)
+- No per-domain approval, so the form keeps working across any host or domain
 - Hosted on GitHub Pages
 
 ## Run Locally
 
-FormSubmit only works when the page is served over HTTP — not opened as a file.
+Serve over HTTP rather than opening `index.html` from disk, so the contact
+form posts correctly.
 
 ```bash
 python -m http.server 8000

@@ -346,9 +346,10 @@
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const resetBtn = document.getElementById('resetFormBtn');
         const originalBtnText = submitBtn.textContent;
-        // Route the AJAX submission through FormSubmit's JSON endpoint
-        // while keeping the normal action as a no-JS fallback.
-        const ajaxEndpoint = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+        // Formspree replies with JSON when submitted via fetch and an
+        // Accept: application/json header. The very same URL stays valid as a
+        // plain POST fallback for visitors without JavaScript.
+        const ajaxEndpoint = contactForm.action;
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -364,8 +365,15 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 const result = await response.json().catch(() => null);
-                const ok = response.ok && result && String(result.success) !== 'false';
-                if (!ok) throw new Error(result && result.message ? result.message : 'Submission failed');
+                // Formspree: HTTP 200 + { ok: true } when accepted,
+                // HTTP 4xx + { ok: false, errors: [...] } when rejected.
+                const ok = Boolean(response.ok && result && result.ok === true);
+                if (!ok) {
+                    const first = result && Array.isArray(result.errors) && result.errors.length
+                        ? (result.errors[0].message || result.errors[0])
+                        : null;
+                    throw new Error(first || (result && result.message) || 'Submission failed');
+                }
 
                 contactForm.hidden = true;
                 formSuccess.hidden = false;
